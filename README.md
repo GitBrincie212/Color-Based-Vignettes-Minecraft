@@ -29,14 +29,14 @@ private static final Identifier MY_VIGNETTE = Identifier.of(
   MyMod.MOD_ID, "textures/vignette.png"
 );
 ```
-Inside the mixin, just before the method, we initialize the texture to use. MyMod.MOD_ID is your mod's ID and ``"textures/vignette.png"`` is the path for the vignette mask texture explained on the first(1) part, we will use this texture later down the line in order to make this work
+Inside the mixin, just before the method, we initialize the texture to use. MyMod.MOD_ID is your mod's ID and ``"textures/vignette.png"`` is the path for the vignette mask texture explained on the [first part](#1-use-the-image-provided-for-the-vignette-texture), we will use this texture later down the line in order to make this work
 
 ### 4. Have a color value like so, where ``INTENSITY`` is the alpha component and basically it fades the vignette
 ```java
 color = ColorHelper.fromARGB(INTENSITY, r, g, b);
 ```
 We set our color where the alpha channel is represented as ``INTENSITY`` and demonstrates the intensity of the vignette effect, lower values mean lower strength of the vignette and vice versa. Then we use RGB colors where r is the red color component, green is the green color component and finally blue is the blue color component. Under the hood this turns it into a integer in the fashion of ``0x123456`` where its a hexadecimal number. You can also do this yourself but its more convinient to do this instead
-### 5. Copy paste this code to draw the texture on the inject method mixin(where color is the color we initialized and MY_VIGNETTE is the texture):
+### 5. Copy paste this code to draw the texture on the inject method mixin:
 ```java
 context.drawTexture(
   RenderLayer::getGuiTexturedOverlay,
@@ -52,7 +52,7 @@ context.drawTexture(
   color
 );
 ```
-We provide this code within the method ``myMod$drawVignette``, where we put our texture to the top left and stretch it to fit the entire screen. Instead of using ``RenderLayer::getVignette`` as you probably intended todo, we use ``  RenderLayer::getGuiTexturedOverlay``, the reason why is explained below in more detail
+We provide this code within the method ``myMod$drawVignette``, where we put our vignette texture on the top left and stretch it to fit the entire screen. Instead of using ``RenderLayer::getVignette`` as you probably intended todo, we use ``  RenderLayer::getGuiTexturedOverlay``, the reason why is explained below in more detail
 
 Now with that said your code should look like this:
 ```java
@@ -91,4 +91,4 @@ We take advantage the fact that vanilla(specifically OpenGL) alpha blends the te
 Lastly the reason we call ``RenderLayer::getGuiTexturedOverlay`` and not any other RenderLayer function is because we want to overlay the texture on top of everything else without any blending like how ``RenderLayer::getVignette`` does(to prevent the color inversion)
 
 ---
-Hope i helped with this post and possibly saved you a lot of the time in the meantime. You may also take a look the code in the java file of the repositery
+Hope i helped with this post and possibly saved you a lot of the time in the meantime. You may also take a look at [the code in the java file of the repositery](https://github.com/GitBrincie212/Color-Based-Vignettes-Minecraft/blob/main/InGameHUDMixin.java)
