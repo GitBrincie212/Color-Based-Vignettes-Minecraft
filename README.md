@@ -52,7 +52,7 @@ context.drawTexture(
   color
 );
 ```
-We provide this code within the method ``myMod$drawVignette``, where we put our vignette texture on the top left and stretch it to fit the entire screen. Instead of using ``RenderLayer::getVignette`` as you probably intended todo, we use ``  RenderLayer::getGuiTexturedOverlay``, the reason why is explained below in more detail
+We provide this code within the method ``myMod$drawVignette``, where we put our vignette texture on the top left and stretch it to fit the entire screen. Instead of using ``RenderLayer::getVignette`` as you probably intended todo, we use ``RenderLayer::getGuiTexturedOverlay``, the reason why is explained below in more detail
 
 Now with that said your code should look like this:
 ```java
