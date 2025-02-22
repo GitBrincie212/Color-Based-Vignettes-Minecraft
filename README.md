@@ -6,7 +6,7 @@ The prerequesists are:
 - Definetely Minecraft 1.21.3 (it may work on other versions or not, you can adjust the logic tho)
 
 ### 1. Use the image provided for the vignette texture<br>
-![](https://media.discordapp.net/attachments/836331093531164752/1334955245100466269/vignette.png?ex=679e6974&is=679d17f4&hm=e6ac9e2c2ade53b9b9fe2732e3fc0ee015c49ba1c203cbea7bdaa33b138f803d&=&format=webp&quality=lossless&width=512&height=512)
+![](https://github.com/GitBrincie212/Color-Based-Vignettes-Minecraft/blob/main/vignette.png)
 <br>This image specifically is a mask. It is black and white so later on we can tint it any color our heart desires. This mask can be replaced with pretty much anything else, although ideally the center point needs to transition to transparent
 
 ### 2. Mixin into the render method in ``InGameHUD`` like so:
